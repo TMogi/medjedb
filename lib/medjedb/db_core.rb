@@ -57,7 +57,11 @@ class DataMaster < ActiveRecord::Base
   end
 
   def self.find_data(master_id)
-    self.find(master_id)
+    begin
+      return self.find(master_id)
+    rescue => e
+      return nil
+    end
   end
 
   # インスタンスメソッド
