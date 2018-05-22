@@ -27,7 +27,7 @@ module Medjedb
     raise "DBが初期化されていません." if (!@medjedb_core)
 
     @medjedb_core.find_target_eki_codes().map do |eki|
-      {station_name: eki.get_station_name(), info_id: eki.get_master_id()}
+      {"駅名" => eki.get_station_name(), "データID" => eki.get_master_id()}
     end
   end
 
