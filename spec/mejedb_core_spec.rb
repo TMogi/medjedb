@@ -6,8 +6,8 @@ RSpec.describe MedjedbCore do
     # データ初期化
     @db = MedjedbCore.new("spec/test_db")
     @db.init_table
-    @db.load_data_master("spec/test_master.csv")
-    @db.load_eki_code_index_data("spec/test_eki.csv")
+    @db.load_data_master("spec/master.csv")
+    @db.load_eki_code_index_data("spec/eki.csv")
   end
   
   context "駅データテスト" do
