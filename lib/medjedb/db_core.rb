@@ -9,7 +9,7 @@ class DbCore < ActiveRecord::Migration[4.2]
     # self.abstract_class = true
     ActiveRecord::Base.establish_connection(
       "adapter" => "sqlite3",
-      "database" => "./#{db_name}")
+      "database" => db_name)
   end
  
   # テーブル削除
@@ -39,6 +39,7 @@ class DbCore < ActiveRecord::Migration[4.2]
     end
 
     create_table(:eki_code_idxes, primary_key: :eki_id) do |t|
+      t.text :station_name
       t.references(:data_masters)
     end
   end
@@ -74,8 +75,8 @@ end
 # TODO(mogi) : 複合キー対応した方がよいかも
 class EkiCodeIdx < ActiveRecord::Base
   # クラスメソッド
-  def self.add(eki_id, master_id)
-    self.create(eki_id: eki_id, data_masters_id: master_id)
+  def self.add(eki_id, station_name, master_id)
+    self.create(eki_id: eki_id, station_name: station_name, data_masters_id: master_id)
   end
 
   def self.get_all_index()
@@ -85,6 +86,10 @@ class EkiCodeIdx < ActiveRecord::Base
   # インスタンスメソッド
   def get_eki_id()
     eki_id
+  end
+
+  def get_station_name()
+    station_name
   end
 
   def get_master_id()
