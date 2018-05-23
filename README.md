@@ -22,7 +22,48 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+所定の場所に以下のCSVファイルを用意してください。
+```
+master.csv
+eki.csv
+```
+
+DB(sqlite3)に接続します。
+DBが存在しない場合は生成されます。
+```ruby
+Medjedb.load("PATH_TO_DATABASE")
+```
+
+CSVからDBにデータを読み込みます。
+結果はDBで保持されるため、毎回読み直す必要はありません。
+CSVのデータが更新されたとき、読み直す必要があります。
+```ruby
+# default
+# - {CURRENT_DIR}/csv/master.csv
+# - {CURRENT_DIR}/csv/eki.csv
+Medjedb.read_csv()
+
+# Use other path to dir 
+# - {PATH_TO_DIR}/master.csv
+# - {PATH_TO_DIR}/eki.csv
+Medjedb.read_csv("PATH_TO_DIR")
+```
+
+DBに登録されている駅情報を全てDBから取得します。
+駅名とデータID(駅に紐づく情報へアクセスするためのID)のハッシュを配列として取得します。
+```ruby
+#ex.
+Medjedb.get_all_station_data()
+#=> [{"駅名"=>"station0", "データID"=>0}, {"駅名"=>"station1", "データID"=>1}, {"駅名"=>"station2", "データID"=>0}]
+```
+
+データIDに関連する情報をDBから取得します。
+得られるデータはハッシュ形式で、読み込んだmaster.csvに依存します。
+```ruby
+#ex.
+Medjedb.get_information(0)
+#=> {"ID"=>0, "パラメータ1"=>"test0", "sample1"=>"test1", "sample2"=>"test2", "sample3"=>"test3"}
+```
 
 ## Development
 
