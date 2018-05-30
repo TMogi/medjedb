@@ -37,4 +37,12 @@ module Medjedb
 
     @medjedb_core.find_information(info_id)
   end
+
+  # データの要素数を取得する
+  def self.get_information_count()
+    raise "DBが初期化されていません." if (!@medjedb_core)
+
+    @medjedb_core.get_information_length()
+  end
+
 end

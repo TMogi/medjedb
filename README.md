@@ -65,6 +65,19 @@ Medjedb.get_information(0)
 #=> {"ID"=>0, "パラメータ1"=>"test0", "sample1"=>"test1", "sample2"=>"test2", "sample3"=>"test3"}
 ```
 
+データの個数は `get_infomation_count()` で取得できます。
+```ruby
+#ex.
+Medjedb.get_information(1)
+#=> {"id"=>"1", "パラメータ1"=>"test0", "sample1"=>"test1", "sample2"=>"test2", "sample3"=>"test3"}
+Medjedb.get_information(2)
+#=> {"id"=>"2", "パラメータ1"=>"test0", "sample1"=>"test1", "sample2"=>"test2", "sample3"=>"test3"}
+Medjedb.get_information(3)
+#=> {}
+Medjedb.get_information_count()
+#=> 3
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
