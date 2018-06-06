@@ -28,9 +28,10 @@ class MedjedbCore
     ReadCsv.each_row(csv_path) do |row|
       unless row.header_row?
         # キーはカラム0
-        # 対象の駅名はカラム1
-        # 対象のマスタIDはカラム2
-        EkiCodeIdx.add(row[0], row[1], row[2])
+        # 駅コードはカラム1
+        # 対象の駅名はカラム2
+        # 対象のマスタIDはカラム3
+        EkiCodeIdx.add(row[0], row[1], row[2], row[3])
       end
     end
   end

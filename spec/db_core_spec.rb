@@ -17,10 +17,10 @@ RSpec.describe DbCore do
     DataMaster.add(2, {name: "テスト2", text: "サンプルデータ2"})
     DataMaster.add(3, {name: "テスト3", text: "サンプルデータ3"})
 
-    EkiCodeIdx.add(0, "station0", 0)
-    EkiCodeIdx.add(1, "station1", 1)
-    EkiCodeIdx.add(2, "station2", 2)
-    EkiCodeIdx.add(3, "station3", 3)
+    EkiCodeIdx.add(0, 0, "station0", 0)
+    EkiCodeIdx.add(1, 1, "station1", 1)
+    EkiCodeIdx.add(2, 2, "station2", 2)
+    EkiCodeIdx.add(3, 3, "station3", 3)
 
     dm = DataMaster.find_data(0)
     p dm.get_hash

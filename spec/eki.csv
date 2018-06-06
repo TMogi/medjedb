@@ -1,4 +1,4 @@
-eki_id,station_name,master_id
-0,station0,0
-1,station1,1
-2,station2,0
+eki_id,eki_code,station_name,master_id
+0,1000,station0,0
+1,1001,station1,1
+2,1002,station2,0

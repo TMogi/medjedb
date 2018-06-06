@@ -38,7 +38,8 @@ class DbCore < ActiveRecord::Migration[4.2]
       drop_table(:eki_code_idxes)
     end
 
-    create_table(:eki_code_idxes, primary_key: :eki_id) do |t|
+    create_table(:eki_code_idxes, primary_key: :id) do |t|
+      t.integer :eki_code
       t.text :station_name
       t.references(:data_masters)
     end
@@ -75,8 +76,8 @@ end
 # TODO(mogi) : 複合キー対応した方がよいかも
 class EkiCodeIdx < ActiveRecord::Base
   # クラスメソッド
-  def self.add(eki_id, station_name, master_id)
-    self.create(eki_id: eki_id, station_name: station_name, data_masters_id: master_id)
+  def self.add(id, eki_code, station_name, master_id)
+    self.create(id: id, eki_code: eki_code, station_name: station_name, data_masters_id: master_id)
   end
 
   def self.get_all_index()
