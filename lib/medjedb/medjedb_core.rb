@@ -48,4 +48,9 @@ class MedjedbCore
     return {} if dm.nil?
     return dm.get_hash()
   end
+
+  # データの要素数を取得する
+  def get_information_length()
+    DataMaster.count
+  end
 end
